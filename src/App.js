@@ -1,5 +1,7 @@
 import { Component } from 'react';
 
+import CardList from './components/card-list/card-list.component.jsx';
+import SearchBox from './components/search-box/search-box.components.jsx';
 // import logo from './logo.svg';
 import './App.css';
 
@@ -51,20 +53,12 @@ class App extends Component {
 
     return (
       <div className="App">
-        <input
-          type="search"
+        <SearchBox
           className="search-box"
+          onChangeHandler={onSearchChange}
           placeholder="search monsters"
-          onChange={onSearchChange}
         />
-
-        {filteredMonsters.map((monster) => {
-          return (
-            <div key={monster.id}>
-              <h1>{monster.name}</h1>
-            </div>
-          );
-        })}
+        <CardList monsters={filteredMonsters} />
       </div>
     );
   }
